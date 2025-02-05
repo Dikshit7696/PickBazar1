@@ -1,102 +1,81 @@
 import React, { useState } from 'react';
 import { BsBagCheckFill } from "react-icons/bs";
+import { FiPlus, FiMinus } from "react-icons/fi";
+import { RxCross2 } from "react-icons/rx";
 
 function AddToCart() {
-    // State to control modal visibility
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [quantity, setQuantity] = useState(1);
 
-    // Function to toggle modal
     const toggleModal = () => {
+        if (!isModalOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
         setIsModalOpen(!isModalOpen);
+    };
+
+    const increaseQuantity = () => {
+        setQuantity(prevQuantity => prevQuantity + 1);
+    };
+
+    const decreaseQuantity = () => {
+        setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
     };
 
     return (
         <div>
-            {/* Modal toggle button */}
-            <div className="fixed top-[50%] right-0 h-full ">
-                <button onClick={toggleModal} className="block bg-green-500 h-24 w-24 text-white font-semibold text-sm" type="button"><BsBagCheckFill className='mr-2 inline' />0 Item
+            <div className="fixed top-[50%] right-0 h-full overflow-hidden">
+                <button onClick={toggleModal} className="block bg-green-500 hover:bg-green-600 rounded-l-md h-24 w-24 text-white font-semibold text-sm" type="button">
+                    <BsBagCheckFill className='mr-2 inline' />0 Item
                     <div className='bg-white h-10 w-16 rounded-md justify-self-center mt-2 text-green-500 py-2'>$0.00</div>
                 </button>
             </div>
-            {/* <button
-                onClick={toggleModal}
-                className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="button"
-            >
-                Toggle modal
-            </button> */}
-
-            {/* Main modal */}
             {isModalOpen && (
-                <div
-                    tabindex="-1"
-                    aria-hidden="true"
-                    className="fixed top-[25%!important] right-0 left-[56.5%!important] z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
-
-                >
-                    {/* <div className="relative p-4 w-screen max-w-2xl max-h-full"> */}
-                    <div className="relative p-4 w-auto h-auto">
-
-                        {/* Modal content */}
-                        <div className="relative bg-white rounded-lg pb-5 shadow-sm dark:bg-gray-700">
-                            {/* Modal header */}
+                <div tabIndex="-1" aria-hidden="true" className="fixed top-[9%!important] right-0 left-[72%!important] z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div className="relative p-4 w-screen max-w-2xl max-h-full">
+                        <div className="relative bg-white h-[655px] w-[410px] rounded-lg pb-5 shadow-sm dark:bg-gray-700">
                             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
-                                <h3 className="text-xl font-semibold text-green-600 dark:text-white"><BsBagCheckFill className='mr-2 inline mb-1' />
-                                    0 Item
+                                <h3 className="text-xl font-semibold text-green-600 dark:text-white"><BsBagCheckFill className='mr-2 inline mb-1' />1 Item
                                 </h3>
-                                <button
-                                    onClick={toggleModal} // Close modal when clicked
-                                    type="button"
-                                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                >
-                                    <svg
-                                        className="w-3 h-3"
-                                        aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 14 14"
-                                    >
-                                        <path
-                                            stroke="currentColor"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                                        />
+                                <button onClick={toggleModal} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                     </svg>
                                     <span className="sr-only">Close modal</span>
                                 </button>
                             </div>
-                            {/* Modal body */}
-                            {/* <div className="p-4 md:p-5 space-y-4">
-                                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                                </p>
-                                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                    The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
-                                </p>
-                            </div> */}
-                            <div className='bg-green-500 rounded-3xl h-14 w-auto mx-5 flex items-center justify-between pl-4'>
-                                <button className='text-white font-semibold'>Checkout</button>
-                                <h1 className='bg-white rounded-3xl text-green-500 font-semibold px-5 py-3 mr-1'>$0.00</h1>
+                            <div className="space-y-4 h-[500px] overflow-auto">
+                                <div className='flex items-center h-28 w-full bg-slate-20 my-5'>
+                                    <div className='bg-gray-200 h-24 w-8 rounded-3xl mx-5 flex flex-col items-center justify-between py-2'>
+                                        <button onClick={increaseQuantity} className='hover:text-green-500'><FiPlus /></button>
+                                        <div>{quantity}</div>
+                                        <button onClick={decreaseQuantity} className='hover:text-red-500'><FiMinus /></button>
+                                    </div>
+                                    <div className=''>
+                                        <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F2%2Fconversions%2FBabySpinach-thumbnail.jpg&w=1920&q=75" className='h-16 w-16 rounded-full' alt="Baby Spinach" />
+                                    </div>
+                                    <div className='justify-start'>
+                                        <h1 className='mx-6 font-bold text-sm'>Baby Spinach</h1>
+                                        <p className='text-sm font-semibold text-green-500 py-3'>$0.00</p>
+                                        <p className='text-sm'>{quantity} x 2Pfund</p>
+                                    </div>
+                                    <div className='flex'>
+                                        <p className='font-semibold text-sm pl-12'>$0.00</p>
+                                        <button className='ml-2 w-6 h-6 hover:bg-gray-200 rounded-full hover:text-red-500'>
+                                            <RxCross2 className='ml-[6px] h-3 w-3 mb-0.5' />
+                                        </button>
+                                    </div>
+                                </div>
+                                <hr />
                             </div>
-                            {/* Modal footer */}
-                            {/* <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                <button
-                                    onClick={toggleModal} // Close modal when clicked
-                                    type="button"
-                                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                >
-                                    I accept
+                            <div className='h-20 w-[410px] fixed bottom-0 py-4'>
+                                <button onClick={toggleModal} className='bg-green-500 hover:bg-green-600 h-14 w-96 justify-between py-2 mx-3 text-white font-bold rounded-3xl flex'>
+                                    <span className='px-5 py-2'>Checkout</span>
+                                    <span className='px-5 py-2 mr-2 rounded-full bg-white text-green-500'> $0.00</span>
                                 </button>
-                                <button
-                                    onClick={toggleModal} // Close modal when clicked
-                                    type="button"
-                                    className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                >
-                                    Decline
-                                </button>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                 </div>

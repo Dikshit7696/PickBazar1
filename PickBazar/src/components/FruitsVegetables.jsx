@@ -19,6 +19,7 @@ import { GiHealthCapsule } from "react-icons/gi";
 import { MdOutlineShoppingBasket } from "react-icons/md";
 import { BsBagCheckFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import AddToCart from './AddToCart';
 
 
 function FruitsVegetables() {
@@ -44,12 +45,13 @@ function FruitsVegetables() {
                     <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F904%2Fgrocery.png&w=3840&q=75" alt="" /></div>
                 <div className='relative z-20'>
                     <h1 className="font-sans font-bold text-5xl mt-64">Groceries Delivered in 90 Minutes</h1>
+                    <AddToCart/>
                     <div className="fixed top-[50%] right-0 h-full ">
                         <button className="bg-green-500 h-24 w-24 text-white font-semibold text-sm"><BsBagCheckFill className='mr-2 inline'/>0 Item
                             <div className='bg-white h-10 w-16 rounded-md justify-self-center mt-2 text-green-500 py-2'>$0.00</div>
                         </button>
                     </div>
-                    <p className="font-sans text-lg mt-8">Get your healthy foods & snacks delivered at your doorsteps all day, every day.</p>
+                    <p className="font-sans text-lg mt-8">Get your healthy foods & snacks delivered at your doorsteps all day everyday</p>
                     <div className="flex items-center w-auto mt-8 drop-shadow-xl">
                         <input type="text" placeholder="   Search your products from here" value={searchQuery} onChange={handleSearchChange} className="w-[700px] h-14 p-3  rounded-l-md focus:outline-none focus:ring-1 focus:ring-green-500" />
                         <button onClick={handleSearch} className="w-32 h-14 px-4 py-3 text-white font-sans font-semibold bg-green-500 rounded-r-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"><FaSearch className='inline mr-2 font-bold' />Search</button>
