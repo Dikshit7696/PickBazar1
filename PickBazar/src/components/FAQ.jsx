@@ -17,10 +17,10 @@ function FAQ() {
                 </div>
             </div>
             <div className='mt-20 mb-48 mx-10 justify-self-center'>
-                <img src="https://pickbazar-react.vercel.app/_next/static/media/no-result.b574bcc9.svg" alt="" />
-                <h1 className='text-xl text-center font-sans font-semibold my-10 text-blue-800'>Sorry, No FAQs Found :(</h1>
+                    <img src="https://pickbazar-react.vercel.app/_next/static/media/no-result.b574bcc9.svg" alt="" />
+                    <h1 className='text-xl text-center font-sans font-semibold my-10 text-blue-800'>Sorry, No FAQs Found :(</h1>
             </div>
-            <Footer />
+            <Footer/>
         </div>
     )
 }

@@ -8,7 +8,7 @@ import ScrollToTop from './ScrollToTop';
 function Customer() {
     return (
         <div>
-            <ScrollToTop />
+            <ScrollToTop/>
             <div className='bg-gray-200 py-32'>
                 <h1 className='pt-20 text-3xl font-sans font-bold text-center'>Customer Refund Policy</h1>
                 <div className='flex justify-self-center mt-4'>

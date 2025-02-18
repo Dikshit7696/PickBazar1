@@ -13,9 +13,9 @@ function Footer() {
                     <p className='ml-10 mt-8'>demo@demo.com</p>
                     <p className='ml-10 mt-1'>+129290122122</p>
                     <div className='flex mt-4 gap-3 ml-10 text-green-500'>
-                        <Link to='https://www.facebook.com/' className=''><FaFacebookSquare className='w-7 h-6 hover:scale-125 transition duration-300 cursor-pointer' /></Link>
-                        <Link to='https://x.com/' className=''><FaTwitter className='w-7 h-6 hover:scale-125 transition duration-300 cursor-pointer' /></Link>
-                        <Link to='https://www.instagram.com/' className=''><FaInstagram className='w-7 h-6 hover:scale-125 transition duration-300 cursor-pointer' /></Link>
+                        <FaFacebookSquare className='w-7 h-6 hover:scale-125 transition duration-300 cursor-pointer' />
+                        <FaTwitter className='w-7 h-6 hover:scale-125 transition duration-300 cursor-pointer' />
+                        <FaInstagram className='w-7 h-6 hover:scale-125 transition duration-300 cursor-pointer' />
                     </div>
                 </div>
                 <div className='mt-2 ml-28'>

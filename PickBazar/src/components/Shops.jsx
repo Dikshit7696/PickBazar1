@@ -6,7 +6,7 @@ import ScrollToTop from './ScrollToTop';
 function Shops() {
     return (
         <div>
-            <ScrollToTop />
+            <ScrollToTop/>
             <div className='mb-80'>
                 <h1 className='pt-40 ml-56 font-sans text-2xl font-semibold'>All shopps</h1>
                 <div className='grid grid-cols-3 justify-self-center gap-4 mt-10'>

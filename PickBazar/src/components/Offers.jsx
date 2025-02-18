@@ -11,14 +11,14 @@ function Offers() {
     return (
         <div>
             <ScrollToTop/>
-            <div className='bg-gray-200 py-24'>
+            <div className='bg-gray-200 py-32'>
                 <h1 className='pt-20 text-3xl font-sans font-bold text-center'>Offers</h1>
                 <div className='flex justify-self-center mt-4'>
                     <p className='hover:text-green-400 cursor-pointer'><Link className='nav-link' to='/'><FaHome className='inline mr-2 mb-1' />Home</Link></p>
                     <p className='text-gray-500'><IoIosArrowForward className='inline mx-4' />Offers</p>
                 </div>
             </div>
-            <div className='grid grid-cols-4 justify-between px-20 py-20 h-auto w-auto bg-gray-100 mb-28'>
+            <div className='grid grid-cols-4 justify-between px-20 py-28 h-auto w-auto bg-gray-100 mb-28'>
                 <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F932%2Fconversions%2F8x2x-thumbnail.jpg&w=640&q=100" alt="" />
                 <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F931%2Fconversions%2F12x2x-thumbnail.jpg&w=640&q=100" alt="" />
                 <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F930%2Fconversions%2F15x2x-thumbnail.jpg&w=640&q=100" alt="" />

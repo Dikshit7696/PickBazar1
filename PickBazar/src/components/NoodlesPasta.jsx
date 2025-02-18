@@ -18,7 +18,9 @@ import { FaGlassCheers } from "react-icons/fa";
 import { GiHealthCapsule } from "react-icons/gi";
 import { MdOutlineShoppingBasket } from "react-icons/md";
 import { Link } from 'react-router-dom';
-import AddToCart from './AddToCart';
+import Cart from './Cart';
+import { CartProvider } from "./CartContext";
+import NoodlesPCard from './NoodlesPCard';
 
 
 function NoodlesPasta() {
@@ -38,14 +40,15 @@ function NoodlesPasta() {
     };
 
     return (
+        <CartProvider>
         <div>
             <div className="flex flex-col items-center text-center pt-8 relative">
                 <div className="h-full w-full absolute z-0 top-0 left-0">
                     <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F904%2Fgrocery.png&w=3840&q=75" alt="" /></div>
                 <div className='relative z-20'>
                     <h1 className="font-sans font-bold text-5xl mt-64">Groceries Delivered in 90 Minutes</h1>
-                    <AddToCart/>
-                    <p className="font-sans text-lg mt-8">Get your healthy foods & snacks delivered at your doorsteps all day everyday</p>
+                    <Cart/>
+                    <p className="font-sans text-lg mt-8">Get your healthy foods & snacks delivered at your doorsteps all day, every day.</p>
                     <div className="flex items-center w-auto mt-8 drop-shadow-xl">
                         <input type="text" placeholder="   Search your products from here" value={searchQuery} onChange={handleSearchChange} className="w-[700px] h-14 p-3  rounded-l-md focus:outline-none focus:ring-1 focus:ring-green-500" />
                         <button onClick={handleSearch} className="w-32 h-14 px-4 py-3 text-white font-sans font-semibold bg-green-500 rounded-r-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"><FaSearch className='inline mr-2 font-bold' />Search</button>
@@ -60,7 +63,7 @@ function NoodlesPasta() {
                         <SwiperSlide><img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F906%2Foffer-1.png&w=640&q=75" className='w-[475px] h-[230px]' alt="" /></SwiperSlide>
                     </Swiper>
                 </div>
-                <div className="w-full bg-gray-100  flex relative z-1">
+                <div className="w-full bg-gray-100 z-10 flex">
                     <div className="col-span-1 w-60 h-auto pb-4 bg-white shadow-md pt-10 mt-0.5">
                         <ul className="space-y-6 sticky top-32 left-0">
                             <li className="flex items-center cursor-pointer hover:text-green-500" onClick={() => toggleDropdown('fruits')}><GiShinyApple className="mr-3 ml-6 w-5 h-5" /><Link className='nav-link' to='/fruitsvegetables'>Fruits & Vegetables</Link></li>
@@ -83,7 +86,7 @@ function NoodlesPasta() {
                                     <li className="hover:text-green-500 cursor-pointer ml-8"><Link className='nav-link' to='/nuts&biscuits'>Nuts & Biscuits</Link></li>
                                     <li className="hover:text-green-500 cursor-pointer mr-2"><Link className='nav-link' to='/chocolates'>Chocolates</Link></li>
                                     <li className="hover:text-green-500 cursor-pointer mr-8"><Link className='nav-link' to='/crisps'>Crisps</Link></li>
-                                    <li className="hover:text-green-500 cursor-pointer ml-10"><Link id='Noodles&Pasta' className='nav-link' to='/noodles&pasta'>Noodles & Pasta</Link></li>
+                                    <li className="hover:text-green-500 cursor-pointer ml-10"><Link className='nav-link' to='/noodles&pasta'>Noodles & Pasta</Link></li>
                                     <li className="hover:text-green-500 cursor-pointer mr-8"><Link className='nav-link' to='/sauce'>Sauce</Link></li>
                                 </ul>
                             )}
@@ -153,178 +156,11 @@ function NoodlesPasta() {
                             )}
                         </ul>
                     </div>
-                    <div className='mt-6 mx-10'>
-                        <div className='grid grid-cols-4 gap-4' >
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F228%2Fcintan_chicken.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Cintan Chicken Noodles</h1>
-                                    <p className='font-thin text-sm mt-2'>0.5lb</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$4.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F229%2Findomie_special_chicken.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Indomie Chicekn Noodles</h1>
-                                    <p className='font-thin text-sm mt-2'>1pc(s)</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$2.50</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F230%2Fkame_stir_fry.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Kamhe H Okkein Stir Fry Noodles</h1>
-                                    <p className='font-thin text-sm mt-2'>0.5lb</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$4.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F231%2Fkoka_curry.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Koka Curry Noodles</h1>
-                                    <p className='font-thin text-sm mt-2'>0.5lb</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$4.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F232%2Fmaggi_bbq.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Maggi Bbq Noodles</h1>
-                                    <p className='font-thin text-sm mt-2'>4pc(s)</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$6.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F233%2Fmaggi_beef.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Maggi Beef Noodles</h1>
-                                    <p className='font-thin text-sm mt-2'>0.5lb</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$3.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F234%2Fmaggi_biriyani.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Maggi Biriyani Noodles</h1>
-                                    <p className='font-thin text-sm mt-2'>1pc(s)</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$3.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F235%2Fmaggi_chicken.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Maggi Chicken Noodles</h1>
-                                    <p className='font-thin text-sm mt-2'>4pc(s)</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$10.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F247%2Fbambino_macaroni.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Bambino Macaroni</h1>
-                                    <p className='font-thin text-sm mt-2'>5lb</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$12.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F248%2Fbambino_premium_pasta.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Bambino Premium Pasta</h1>
-                                    <p className='font-thin text-sm mt-2'>5lb</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$14.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F249%2Fbatchelors_pasta_sauce.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Batchelors Pasta N Sauce Cheese</h1>
-                                    <p className='font-thin text-sm mt-2'>2lb</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$8.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F250%2Fborges-pasta.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Borges Pasta</h1>
-                                    <p className='font-thin text-sm mt-2'>5lb</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$12.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F251%2FCheese-%2526-Broccoli-Pasta-%2526-Sauce.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Pasta Sauce</h1>
-                                    <p className='font-thin text-sm mt-2'>3lb</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$12.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F252%2Fsunremo_chicken_curry_pasta.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Sun Remo Chicken Flavour Pasta</h1>
-                                    <p className='font-thin text-sm mt-2'>2lb</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$12.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='h-[400px] w-72 bg-white border rounded-md mb-10'>
-                                <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F253%2Fknorr_pastaria.jpg&w=1920&q=75" className='w-60 h-60 justify-self-center' alt="" />
-                                <div className='text-start ml-5'>
-                                    <h1 className='font-semibold'>Knorr Pastaria</h1>
-                                    <p className='font-thin text-sm mt-2'>3lb</p>
-                                    <div className='flex'>
-                                        <p className='font-semibold text-green-500 mt-12'>$12.00</p>
-                                        <button className='ml-28 font-semibold rounded-3xl mt-11 border border-green-500 w-24 h-9 text-green-500 hover:bg-green-700 hover:text-white'><MdOutlineShoppingBasket className='inline mr-3 h-4 w-4' />Cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <NoodlesPCard/>
                 </div>
             </div>
         </div>
+        </CartProvider>
     );
 }
 

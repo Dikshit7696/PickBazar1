@@ -18,7 +18,8 @@ import { FaGlassCheers } from "react-icons/fa";
 import { GiHealthCapsule } from "react-icons/gi";
 import { MdOutlineShoppingBasket } from "react-icons/md";
 import { Link } from 'react-router-dom';
-import AddToCart from './AddToCart';
+import Cart from './Cart';
+import { CartProvider } from "./CartContext";
 
 
 function Spices() {
@@ -38,14 +39,15 @@ function Spices() {
     };
 
     return (
+        <CartProvider>
         <div>
             <div className="flex flex-col items-center text-center pt-8 relative">
                 <div className="h-full w-full absolute z-0 top-0 left-0">
                     <img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F904%2Fgrocery.png&w=3840&q=75" alt="" /></div>
                 <div className='relative z-20'>
                     <h1 className="font-sans font-bold text-5xl mt-64">Groceries Delivered in 90 Minutes</h1>
-                    <AddToCart/>
-                    <p className="font-sans text-lg mt-8">Get your healthy foods & snacks delivered at your doorsteps all day everyday</p>
+                    <Cart/>
+                    <p className="font-sans text-lg mt-8">Get your healthy foods & snacks delivered at your doorsteps all day, every day.</p>
                     <div className="flex items-center w-auto mt-8 drop-shadow-xl">
                         <input type="text" placeholder="   Search your products from here" value={searchQuery} onChange={handleSearchChange} className="w-[700px] h-14 p-3  rounded-l-md focus:outline-none focus:ring-1 focus:ring-green-500" />
                         <button onClick={handleSearch} className="w-32 h-14 px-4 py-3 text-white font-sans font-semibold bg-green-500 rounded-r-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"><FaSearch className='inline mr-2 font-bold' />Search</button>
@@ -60,7 +62,7 @@ function Spices() {
                         <SwiperSlide><img src="https://pickbazar-react.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F906%2Foffer-1.png&w=640&q=75" className='w-[475px] h-[230px]' alt="" /></SwiperSlide>
                     </Swiper>
                 </div>
-                <div className="w-full bg-gray-100  flex relative z-1">
+                <div className="w-full bg-gray-100 z-10 flex">
                     <div className="col-span-1 w-60 h-auto pb-4 bg-white shadow-md pt-10 mt-0.5">
                         <ul className="space-y-6 sticky top-32 left-0">
                             <li className="flex items-center cursor-pointer hover:text-green-500" onClick={() => toggleDropdown('fruits')}><GiShinyApple className="mr-3 ml-6 w-5 h-5" /><Link className='nav-link' to='/fruitsvegetables'>Fruits & Vegetables</Link></li>
@@ -162,6 +164,7 @@ function Spices() {
                 </div>
             </div>
         </div>
+        </CartProvider>
     );
 }
 

@@ -2,8 +2,8 @@ import React from 'react'
 import { FaHome } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from 'react-router-dom';
-import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
+import Footer from './Footer';
 
 function Vendor() {
     return (
